@@ -27,7 +27,6 @@ apply plugin: "com.github.johnrengelman.shadow"
 
 dependencies {
     implementation group: 'org.slf4j', name: 'slf4j-nop', version: '2.0.3'
-    implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '7.0.1-ccs'
     implementation group: 'org.apache.kafka', name: 'kafka-streams', version: '7.7.1-ccs'
 }
 

@@ -46,6 +46,6 @@ jar {
 // run task configuration removed for simplicity
 
 shadowJar {
-    archiveBaseName = "kafka-java-getting-started"
+    archiveBaseName = "producer-wordcount"
     archiveClassifier = ''
 }
