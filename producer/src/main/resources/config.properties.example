@@ -1,0 +1,4 @@
+kafka.key=
+kafka.secret=
+bootstrap.servers=
+topic.name=

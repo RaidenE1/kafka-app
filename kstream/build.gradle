@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0"
+    }
+}
+
+plugins {
+    id "java"
+}
+
+sourceCompatibility = "1.11"
+targetCompatibility = "1.11"
+version = "0.0.1"
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url "https://packages.confluent.io/maven"
+    }
+}
+
+apply plugin: "com.github.johnrengelman.shadow"
+
+dependencies {
+    implementation group: 'org.slf4j', name: 'slf4j-nop', version: '2.0.3'
+    implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '7.0.1-ccs'
+    implementation group: 'org.apache.kafka', name: 'kafka-streams', version: '7.7.1-ccs'
+}
+
+jar {
+    manifest {
+        attributes(
+                "Class-Path": configurations.compileClasspath.collect { it.getName() }.join(" "),
+                "Main-Class": "io.confluent.developer.WordCount"
+        )
+    }
+}
+
+// run task configuration removed for simplicity
+
+shadowJar {
+    archiveBaseName = "kstream-wordcount"
+    archiveClassifier = ''
+}
